@@ -52,7 +52,7 @@ class ApiV1 extends lapis.Application
             url: "https://plug.dj/_/users/#{@params.id}"
             method: "GET"
             headers: {
-                "cookie": "session=#{session_cookie}"
+                "cookie": "session=#{get_session!}"
             }
         }
         api = from_json api_body
