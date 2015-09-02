@@ -1,9 +1,9 @@
 lapis = require "lapis"
-import capture_errors_json, yield_error from require "lapis.application"
-import assert_valid from require "lapis.validate"
 rand = require "vendor.random"
 http = require "lapis.nginx.http"
 
+import capture_errors_json, yield_error from require "lapis.application"
+import assert_valid from require "lapis.validate"
 import from_json, to_json from require "lapis.util"
 import json_params from require "lapis.application"
 
@@ -45,7 +45,7 @@ class ApiV1 extends lapis.Application
         if user then user\delete! else yield_error "no_id" 
         print "the set secret is #{user.secret}"
         print "the given secret is #{@params.secret}"
---        assert_valid @params, {{ "secret", equals: user.secret, "bad_secret"}}
+        assert_valid @params, {{ "secret", equals: user.secret, "bad_secret"}}
 
         -- get user's api object from plug.dj
         api_body, api_status_code, h = http.simple {
@@ -88,5 +88,3 @@ class ApiV1 extends lapis.Application
         assert_valid @params, {{"token", equals: user.token, "bad_token"}}
 
         json: { status: "ok" }
-
---        assert_valid @params, {{ "token", equals: user.token, "bad_secret"}}
