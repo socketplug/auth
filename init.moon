@@ -5,5 +5,5 @@ for line in io.lines "session_cookies"
 count = 1
 export get_session = ->
     temp = count
-    count = if count + 1 > #session then 1 else count + 1
+    count = if count + 1 > #sessions then 1 else count + 1
     sessions[temp]
